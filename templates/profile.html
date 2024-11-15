@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - GDG On Campus</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #212121;
+        color: #ffffff;
+        font-family: "Courier New", monospace;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .navbar {
+        background-color: #333;
+        border-bottom: 2px solid #00aaff;
+      }
+
+      .navbar-brand,
+      .nav-link {
+        color: #ffffff !important;
+        font-weight: bold;
+      }
+
+      .nav-link:hover {
+        color: #00aaff !important;
+      }
+
+      .profile-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem;
+        flex-grow: 1;
+      }
+
+      .card {
+        background-color: #333;
+        border-radius: 8px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-body {
+        padding: 2rem;
+        color: #ffffff;
+      }
+
+      .card-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+        border-bottom: 2px solid #00aaff;
+        margin-bottom: 1rem;
+      }
+
+      .btn-primary {
+        background-color: #00aaff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #0088cc;
+      }
+
+      .btn-edit {
+        background-color: #0088cc;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+      }
+
+      .btn-edit:hover {
+        background-color: #00aaff;
+      }
+
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 4px solid #00aaff;
+        margin-bottom: 1.5rem;
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .tech-card {
+        background-color: #444;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        width: 8rem;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .tech-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .tech-card img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+      }
+
+      .achievement-progress .progress {
+        height: 25px;
+        background-color: #555;
+      }
+
+      .achievement-progress .progress-bar {
+        background-color: #00aaff;
+      }
+
+      .console {
+        background-color: #222;
+        color: #00ff00;
+        padding: 1rem;
+        font-family: "Courier New", monospace;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+        margin-top: 2rem;
+        height: 250px;
+        overflow-y: auto;
+      }
+
+      .console input {
+        background: transparent;
+        border: none;
+        color: #00ff00;
+        outline: none;
+        width: 100%;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-control {
+        background-color: #444;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        color: #ffffff;
+        width: 100%;
+      }
+
+      .form-control:focus {
+        background-color: #555;
+        border-color: #00aaff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">GDG On Campus</a>
+    </nav>
+
+    <!-- Profile Container -->
+    <div class="profile-container">
+      <!-- Profile Overview -->
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-center">
+            <img
+              src="https://www.w3schools.com/w3images/avatar2.png"
+              alt="User Profile"
+              class="profile-img"
+            />
+          </div>
+          <h2 class="text-center">John Doe</h2>
+          <p class="text-center">Club Member</p>
+          <div class="text-center">
+            <button class="btn btn-edit" onclick="editProfile()">
+              Edit Profile
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Details -->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-header">Basic Information</h4>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              value="John Doe"
+              disabled
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              value="john.doe@example.com"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-header">Tech Stack</h4>
+          <div class="tech-stack">
+            <div class="tech-card">
+              <img
+                src="https://img.icons8.com/ios/452/python.png"
+                alt="Python"
+              />
+              <p>Python</p>
+            </div>
+            <div class="tech-card">
+              <img
+                src="https://img.icons8.com/ios/452/javascript.png"
+                alt="JavaScript"
+              />
+              <p>JavaScript</p>
+            </div>
+            <div class="tech-card">
+              <img
+                src="https://img.icons8.com/ios/452/google-cloud.png"
+                alt="Google Cloud"
+              />
+              <p>Google Cloud</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Streaks and Performance -->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-header">Streaks and Performance</h4>
+          <div class="achievement-progress">
+            <div>Programming Streak: 14 days</div>
+            <div class="progress">
+              <div class="progress-bar" style="width: 70%"></div>
+            </div>
+          </div>
+          <div class="achievement-progress">
+            <div>Contribution to Club: 90%</div>
+            <div class="progress">
+              <div class="progress-bar" style="width: 90%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fun Console Section -->
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-header">Console</h4>
+          <div class="console">
+            <p>
+              <strong>> _</strong> Welcome to your profile console. Type "help"
+              for commands.
+            </p>
+            <input type="text" placeholder="Type your command..." />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function editProfile() {
+        const inputs = document.querySelectorAll(".form-control");
+        inputs.forEach((input) => (input.disabled = !input.disabled));
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
