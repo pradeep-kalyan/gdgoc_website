@@ -22,7 +22,7 @@
       body {
         background-color: #121212;
         color: #ffffff;
-        font-family: "Courier New", monospace; /* Monospace font for programming look */
+        font-family: "Courier New", monospace;
       }
       .navbar,
       .footer,
@@ -106,8 +106,19 @@
             <a href="https://linktr.ee/gdgocpec" class="btn btn-primary ms-3"
               >Join Us</a
             >
-            <a href="login.html" class="btn btn-outline-light ms-2">Login</a>
-            <!-- Login Button -->
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-light ms-2"
+              >Logout</a
+            >
+            {% if current_user.is_admin %}
+            <a href="{{ url_for('admin') }}" class="btn btn-outline-light ms-2"
+              >Admin</a
+            >
+            {% endif %} {% else %}
+            <a href="{{ url_for('login') }}" class="btn btn-outline-light ms-2"
+              >Login</a
+            >
+            {% endif %}
           </div>
         </div>
       </nav>
@@ -162,7 +173,6 @@
       </section>
 
       <!-- Clubs Section -->
-      <!-- Clubs Section -->
       <section id="clubs" class="clubs-section">
         <div class="container-lg text-center">
           <h3 class="section-title my-4">Our Clubs</h3>
@@ -198,7 +208,7 @@
                 </div>
               </div>
             </div>
-            <!-- Club 3:Cloud Computing Club -->
+            <!-- Club 3: Cloud Computing Club -->
             <div class="col-md-4 col-sm-6 mb-3">
               <div class="card">
                 <div class="card-body">
@@ -211,7 +221,7 @@
                 </div>
               </div>
             </div>
-            <!-- Club 4: Cloud Computing Club -->
+            <!-- Club 4: Cybersecurity & Ethical Hacking Club -->
             <div class="col-md-4 col-sm-6 mb-3">
               <div class="card">
                 <div class="card-body">
@@ -224,7 +234,7 @@
                 </div>
               </div>
             </div>
-            <!-- Club 5: IoT Club -->
+            <!-- Club 5: Full Stack Web Development Club -->
             <div class="col-md-4 col-sm-6 mb-3">
               <div class="card">
                 <div class="card-body">
@@ -236,7 +246,7 @@
                 </div>
               </div>
             </div>
-            <!-- Club 6: Blockchain Club -->
+            <!-- Club 6: Graphics, Gaming, & UI/UX Club -->
             <div class="col-md-4 col-sm-6 mb-3">
               <div class="card">
                 <div class="card-body">
